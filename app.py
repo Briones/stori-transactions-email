@@ -6,7 +6,11 @@ app = Flask(__name__)
 
 @app.route("/")
 def main():
-    return parseCSV()        
+    create_connection()
+    create_transactions_table()
+    truncate_transactions_table()
+    html = parseCSV()    
+    return html
 
 if __name__ == "__main__":
     port = int(os.environ.get('PORT', 7007))

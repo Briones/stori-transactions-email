@@ -6,3 +6,15 @@ services:
       - "7007:7007"
     volumes:
       - .:/code
+
+  db:
+    image: mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: temporalPass
+      MYSQL_USER: stori-user
+      MYSQL_PASSWORD: stori-secret
+      MYSQL_DATABASE: stori
+    restart: always
+    ports:
+      - "13306:3306"
+    

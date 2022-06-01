@@ -48,7 +48,26 @@ You can edit the HTML for the email in case you want to add some customization, 
 Just need to remember that this HTML is not meant to be executed in the browser, but is meant to be sent into an email account.
 So you will need to put attention to not add customization that doesn't work in most email clients.
 
+## Database
 
+The project includes a Docker Image of MySQL where the transactions is gonna be stored, when the `docker compose up` is executed the instance of mysql server will be up as well.
+To access locally to the DB you can add to your `/etc/hosts` file the following line:
 
+```
+127.0.0.1       db
+```
 
+With this you can configure your client to acess to the DB with the following configurations:
 
+```
+host: db
+db: stori
+user: stori-user
+password: story-secret
+port: 13306  // Notice that the port is different than the default to not have conflicts with a local mysql server
+```
+
+Each time that you update the page all registries are gonna be deleted and will be recreated in base to the `data.csv`
+The data will be stored as it shows:
+
+![Database Example](/static/images/database-example.png "Database Example")
